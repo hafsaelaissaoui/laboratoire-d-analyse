@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 21 juin 2025 à 17:23
+-- Généré le : lun. 23 juin 2025 à 11:52
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -42,7 +42,8 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 (3, 'Microbiologie'),
 (4, 'Auto-immunité'),
 (5, 'Biologie de reproduction'),
-(6, 'Biologie moléculaire');
+(6, 'Biologie moléculaire'),
+(7, 'hormone');
 
 -- --------------------------------------------------------
 
@@ -58,6 +59,16 @@ CREATE TABLE `details` (
   `prix` decimal(8,2) NOT NULL,
   `resultat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `details`
+--
+
+INSERT INTO `details` (`id_detail`, `id_dossier`, `id_service`, `id_patient`, `prix`, `resultat`) VALUES
+(1, 1, 8, 21, 35.00, ''),
+(2, 1, 3, 21, 35.00, ''),
+(3, 2, 31, 13, 150.00, ''),
+(4, 2, 29, 13, 90.00, '');
 
 -- --------------------------------------------------------
 
@@ -77,6 +88,18 @@ CREATE TABLE `dossier` (
   `service_etat` enum('en attente','validé','refusé') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `dossier`
+--
+
+INSERT INTO `dossier` (`id_dossier`, `date_dossier`, `libelle`, `id_patient`, `type_service`, `service_genre_infirmier`, `service_date_demande`, `ordonnance_path`, `service_etat`) VALUES
+(1, '2025-06-22 19:13:10', 'Dossier automatique', 21, 'LOCAL', 'infirmière', '2025-06-22 19:13:10', '', 'en attente'),
+(2, '2025-06-22 18:20:34', 'Analyses', 13, 'LOCAL', 'infirmière', '2025-06-22 18:20:34', '', 'en attente'),
+(3, '2025-06-22 19:21:01', 'Demande domicile', 22, 'domicile', 'infirmier', '2025-06-22 15:29:00', 'uploads/1750616461_Cahier des charges.pdf', 'en attente'),
+(4, '2025-06-22 19:23:23', 'Demande domicile', 22, 'domicile', 'infirmière', '2025-09-09 16:00:00', 'uploads/1750616603_download-removebg-preview.png', 'en attente'),
+(5, '2025-06-23 01:43:42', 'Demande domicile', 22, 'domicile', 'infirmière', '2025-09-09 16:00:00', 'uploads/1750639422_download-removebg-preview.png', 'en attente'),
+(6, '2025-06-23 02:09:01', 'Demande domicile', 23, 'domicile', 'infirmière', '2025-06-24 12:00:00', 'uploads/6858a92dc333c_download-removebg-preview.png', 'en attente');
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +118,26 @@ CREATE TABLE `patient` (
   `patient_password` varchar(255) NOT NULL,
   `patient_email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `patient`
+--
+
+INSERT INTO `patient` (`id_patient`, `patient_nom`, `patient_prenom`, `patient_cin`, `patient_telephone`, `patient_date_naissance`, `patient_genre`, `patient_date_inscription`, `patient_password`, `patient_email`) VALUES
+(10, 'haf', 'giiii', 'zg45454', '09888877', '2000-09-09', 'Femme', '2025-06-22 16:06:11', '', ''),
+(11, 'rach', 'dri', 'zg165522', '098878393', '2002-09-08', 'Femme', '2025-06-22 16:15:03', '$2y$10$aptAWmRqymXQFnj1RvYrJewKXLsAX9v1waYhdFBHlzstxqBwsKQf.', ''),
+(12, 'hafsa', 'aissa', 'ZG163327', '07725444487', '2002-07-07', 'Femme', '2025-06-22 16:18:57', '$2y$10$ttkaUmlQGJmO4rJHswwZD.awEW.zqUneJZO8CFBh31kbIGvONYV4K', 'hafsadrdr@gmail.com'),
+(13, 'ali', 'aissaoui', 'ZG123324', '088888888', '1996-07-17', 'Homme', '2025-06-22 16:43:24', '$2y$10$7N3K8gJoBMr46zzoISamUuud1kWLyxCiyaeRGeyklzNhxPl5/69IG', ''),
+(14, 'ali', 'aissaoui', 'ZG123324', '088888888', '1996-07-17', 'Homme', '2025-06-22 16:49:44', '$2y$10$wFLQhqavv5N.ibx1KS6zm.YV/dD0EQR.imyhDU1FrNkG/2WlucyrC', ''),
+(15, 'souso', 'mechra', 'zg172234', '0773554444', '2002-09-09', 'Femme', '2025-06-22 16:50:22', '$2y$10$KRUsBmwTAqOGzrdvWe7zN.4kwWzCOIbHqlghnAz1Bn33AcMSP7Cbm', ''),
+(16, 'souso', 'mechra', 'zg172234', '0773554444', '2002-09-09', 'Femme', '2025-06-22 16:53:36', '$2y$10$H7sa1AWDZvbl1LHYYulMqOKss2BUNppE99Ylc.GkXJu0cvpF28UGu', ''),
+(17, 'souso', 'mechra', 'zg172234', '0773554444', '2002-09-09', 'Femme', '2025-06-22 16:53:44', '$2y$10$4YlHO0S61IQifXwe5BH3JOkgcyz77hJAmL7.Hf.rfJO39VR9BhjU2', ''),
+(18, 'souso', 'mechra', 'zg172234', '0773554444', '2002-09-09', 'Femme', '2025-06-22 17:00:47', '$2y$10$UInt0P2yAWMTo8luXUzvHe27AQ1IceHvnzOMkhkp/I9rFd02rYMHO', ''),
+(19, 'hajar', 'mezra', 'gh454545', '0767654433', '2009-09-09', 'Femme', '2025-06-22 17:01:16', '$2y$10$9qCGrFPDdgM12WPDeKy9meYzxzmw4Po0bbwSYUUIWthiiWg8Z0aPO', ''),
+(20, 'hajar', 'mezra', 'gh454545', '0767654433', '2009-09-09', 'Femme', '2025-06-22 17:06:17', '$2y$10$9X/B/vG.vTWya4C629kiC.SB377DmRcSdJH6VeylTXLt3n7fqXEay', ''),
+(21, 'ana', 'hoa', 'sdfg23', '098765432', '3000-09-09', 'Femme', '2025-06-22 19:02:56', '$2y$10$T5pK6zKLrmL7RahmubShg.YpNm0x88pulQ1q9PsoOxwHnQ0uZH.e.', ''),
+(22, 'hafsa', 'elaissaoui', 'ZG163322', '0726334567', '2002-09-09', 'Homme', '2025-06-22 19:21:01', '$2y$10$BtbECXUNdO3UqipVxPXFKO3kLvtfIO7G2VG05EpOgJlGTrcv3RczK', 'hafsahgh@gmail.com'),
+(23, 'ali', 'aissaoui', '', '0788336666', '1999-12-01', '', '2025-06-23 02:09:01', '$2y$10$GdpJxNCCrqqzZQTu9w4Xpe78ubZZqj5scsy0wyaoyYHFRmGJAfYsu', 'hafsaelaissaoui@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -116,11 +159,10 @@ CREATE TABLE `services` (
 
 INSERT INTO `services` (`id_service`, `nom_analyse`, `prix_analyse`, `dure_analyse`, `id_categorie`) VALUES
 (1, 'Glycémie à jeun', 60.00, '1 jour', 1),
-(2, 'Créatinine', 40.00, '1 jour', 1),
 (3, 'Urée sanguine', 35.00, '1 jour', 1),
 (4, 'Bilirubine totale', 50.00, '1 jour', 1),
 (5, 'Cholestérol total', 45.00, '1 jour', 1),
-(6, 'Triglycérides', 50.00, '1 jour', 1),
+(6, 'Triglycérides', 100.00, '1 jour', 6),
 (7, 'Protéines totales', 40.00, '1 jour', 1),
 (8, 'Acide urique', 35.00, '1 jour', 1),
 (9, 'Calcium', 30.00, '1 jour', 1),
@@ -257,31 +299,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_categorie` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `dossier`
 --
 ALTER TABLE `dossier`
-  MODIFY `id_dossier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dossier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id_patient` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_patient` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id_service` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_service` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT pour la table `users`
