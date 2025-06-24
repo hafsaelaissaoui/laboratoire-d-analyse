@@ -1,3 +1,7 @@
+<?php
+include 'includes/caissier_header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -224,27 +228,8 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <nav class="sidebar-nav">
-            <ul>
-                <li>
-                    <a href="caissier.php" onclick="navigateTo('accueil')">Accueil</a>
-                </li>
-                <li>
-                    <a href="caissier_tarifs.php" class="active" onclick="navigateTo('tarifs')">Tarifs des analyses</a>
-                </li>
-                <li class="notification-item">
-                    <a href="#" onclick="navigateTo('notifications')">Notifications</a>
-                    <svg class="bell-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 2C7.8 2 6 3.8 6 6v3.7L4.6 11.1c-.4.4-.6 1-.6 1.6V14c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-1.3c0-.6-.2-1.2-.6-1.6L14 9.7V6c0-2.2-1.8-4-4-4zm0 16c1.1 0 2-.9 2-2H8c0 1.1.9 2 2 2z"/>
-                    </svg>
-                </li>
-            </ul>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="#" onclick="logout()">Deconnexion</a>
-        </div>
-    </div>
+   
+      
 
     <!-- Main Content -->
     <div class="main-content">

@@ -11,7 +11,7 @@
     }
 
     .background {
-      background: url('../photos/background.jpg') no-repeat center center/cover;
+      background: url('../../photos/background.jpg') no-repeat center center/cover;
       width: 100%;
       height: 100vh;
       display: flex;

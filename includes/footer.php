@@ -35,8 +35,7 @@
     margin: 0;
   }
 
-  .footer-section li,
-  .footer-section p {
+  .footer-section li {
     font-weight: 400;
     margin: 6px 0;
     line-height: 1.5;
@@ -64,7 +63,6 @@
   <div class="footer-container">
     <div class="footer-section logo-section">
       <img src="../photos/logo.png" alt="Logo Laboratoire Chark" class="logo" />
-      <p>Laboratoire<br>Chark</p>
     </div>
     <div class="footer-section">
       <h3>SERVICES</h3>

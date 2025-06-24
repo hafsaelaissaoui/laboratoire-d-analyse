@@ -15,7 +15,7 @@ $analyses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tarif des Analyses</title>
   <style>
     :root {
@@ -27,7 +27,7 @@ $analyses = $stmt->fetchAll(PDO::FETCH_ASSOC);
       --header-bg: #f0f0f0;
       --border: #ddd;
       --shadow: rgba(0, 0, 0, 0.05);
-        --orange: #F08C00;
+      --orange: #F08C00;
       --blue-light: #6A9AB0;
       --blue-dark: #2D6486;
       --white: #fff;
@@ -41,7 +41,7 @@ $analyses = $stmt->fetchAll(PDO::FETCH_ASSOC);
       margin: 0;
       color: var(--text);
     }
-     nav {
+    nav {
       background-color: var(--blue-dark);
       display: flex;
       justify-content: space-between;
@@ -185,36 +185,46 @@ $analyses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
   <h1>Tarif des Analyses</h1>
 
-  <form class="search-form">
+  <form class="search-form" onsubmit="return false;">
     <input type="text" id="searchInput" placeholder="Rechercher une analyse...">
   </form>
 
   <div class="table-container" id="tableContainer">
     <?php
       $currentCategorie = '';
+      $tableOpened = false;
+
       foreach ($analyses as $analyse):
         if ($analyse['nom_categorie'] !== $currentCategorie):
-          if ($currentCategorie !== '') echo "</tbody></table>";
+          if ($tableOpened) {
+            echo "</tbody></table>";
+          }
+
           $currentCategorie = $analyse['nom_categorie'];
+          echo "<div class='category-header'>" . htmlspecialchars($currentCategorie) . "</div>";
+          echo "<table class='analyse-table'>
+                  <thead>
+                    <tr>
+                      <th>Analyse</th>
+                      <th>Prix (DH)</th>
+                      <th>Durée</th>
+                    </tr>
+                  </thead>
+                  <tbody>";
+          $tableOpened = true;
+        endif;
     ?>
-      <div class="category-header"><?= htmlspecialchars($currentCategorie) ?></div>
-      <table class="analyse-table">
-        <thead>
-          <tr>
-            <th>Analyse</th>
-            <th>Prix (DH)</th>
-            <th>Durée</th>
-          </tr>
-        </thead>
-        <tbody>
-    <?php endif; ?>
         <tr>
           <td><?= htmlspecialchars($analyse['nom_analyse']) ?></td>
           <td><?= htmlspecialchars($analyse['prix_analyse']) ?></td>
           <td><?= htmlspecialchars($analyse['dure_analyse']) ?></td>
         </tr>
-    <?php endforeach; ?>
-    </tbody></table>
+    <?php endforeach;
+
+      if ($tableOpened) {
+        echo "</tbody></table>";
+      }
+    ?>
   </div>
 </div>
 

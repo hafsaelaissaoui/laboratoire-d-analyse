@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['patient_id'] = $patient['id_patient'];
             $_SESSION['patient_nom'] = $patient['patient_nom'];
             $_SESSION['patient_prenom'] = $patient['patient_prenom'];
-            header("Location: ../pages/accueil.php");
+            header("Location: utilisateur/index.php");
             exit;
         } else {
             $erreur = "Email ou mot de passe incorrect.";

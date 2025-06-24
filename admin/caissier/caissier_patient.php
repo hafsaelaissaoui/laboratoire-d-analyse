@@ -181,7 +181,7 @@ th {
         <input type="text" name="cin" placeholder="CIN (facultatif)">
         <input type="date" name="date_naissance" required>
         <input type="text" name="telephone" placeholder="Téléphone" required>
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="email" name="email" placeholder="Email" (facultatif)>
         <select name="genre" required>
           <option value="">-- Genre --</option>
           <option value="Homme">Homme</option>

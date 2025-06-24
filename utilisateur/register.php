@@ -353,7 +353,7 @@
             <!-- Left Panel -->
             <div class="welcome-panel">
                 <h2 class="welcome-title">Bienvenue a nouveau !</h2>
-                <a href="#" class="connect-btn">SE CONNECTER</a>
+                <a href="compte.php" class="connect-btn">SE CONNECTER</a>
             </div>
 
             <!-- Right Panel - Create Account Form -->
